@@ -20,10 +20,10 @@ var RadSet = (function (window, document, $, undefined) {
         Filename of the CSV file containing the Data
         @property File
         @type String
-        @default "YHCR_Diabetes_Comorbidities.csv"
+        @default "YHCR_Diabetes_Comorbidities1.csv"
         @for Options
         **/
-        File: "YHCR_Diabetes_Comorbidities.csv",
+        File: "YHCR_Diabetes_Comorbidities1.csv",
         /**
         Maximum Number of Entries
         @property EntryLimit
