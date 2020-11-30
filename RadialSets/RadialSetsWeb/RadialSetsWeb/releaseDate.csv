@@ -1,0 +1,17 @@
+Action	#ef3423	#fc6d33	#fd8d3c	#fc7d37	#fd8d3c
+Adventure	#fc7d37	#fc7d37	#f84728	#f84728	#d51020
+Children	#f84728	#fc7d37	#fc4e2a	#fd8d3c	#fc7d37
+Comedy	#feb24c	#fc6d33	#fc6d33	#fd8d3c	#feb24c
+Crime	#fec561	#feb24c	#feb24c	#fd8d3c	#fec561
+Documentary	#FFFFFF	#FFFFFF	#FFFFFF	#fd8d3c	#fec561
+Drama	#e1181d	#fc6d33	#fd8d3c	#feb24c	#feb24c
+Fantasy	#feb24c	#fd8d3c	#fc4e2a	#fc5d2e	#f23a24
+Noir	#FFFFFF	#feb24c	#f23a24	#ac0026	#a80026
+Horror	#fec561	#f23a24	#fc7d37	#f23a24	#e6201d
+Musical	#FFFFFF	#f84728	#d71120	#c50524	#b80026
+Mystery	#e1181d	#fed976	#fd8d3c	#ef3423	#feb24c
+Romance	#e6201d	#fc4e2a	#fc7d37	#feb24c	#fec561
+SciFi	#f84728	#fc4e2a	#fc5d2e	#f54126	#c10225
+Thriller	#fec561	#fc7d37	#feb24c	#feb24c	#fd8d3c
+War	#ef3423	#feb24c	#f23a24	#ec2d21	#d9131f
+Western	#FFFFFF	#fd8d3c	#f54126	#d30f21	#c50524

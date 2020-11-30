@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>RadSetsDraw.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Category.html">Category</a></li>
+            
+                <li><a href="../classes/ConnectedCategory.html">ConnectedCategory</a></li>
+            
+                <li><a href="../classes/ConnectionArc.html">ConnectionArc</a></li>
+            
+                <li><a href="../classes/Entry.html">Entry</a></li>
+            
+                <li><a href="../classes/Histogram.html">Histogram</a></li>
+            
+                <li><a href="../classes/IntersectSelection.html">IntersectSelection</a></li>
+            
+                <li><a href="../classes/Options.html">Options</a></li>
+            
+                <li><a href="../classes/RadSet.html">RadSet</a></li>
+            
+                <li><a href="../classes/Selection.html">Selection</a></li>
+            
+                <li><a href="../classes/SubtractSelection.html">SubtractSelection</a></li>
+            
+                <li><a href="../classes/UnionSelection.html">UnionSelection</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/Converter.html">Converter</a></li>
+            
+                <li><a href="../modules/Draw.html">Draw</a></li>
+            
+                <li><a href="../modules/RadSets.html">RadSets</a></li>
+            
+                <li><a href="../modules/Selector.html">Selector</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: RadSetsDraw.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+﻿/**
+Module for web implementation of Radial Sets
+@module RadSets
+@submodule Draw
+@main RadSets
+**/
+
+/**
+@class RadSet
+@constructor
+**/
+var RadSet = (function (window, document, $, undefined) {
+    var _x = window.RadSet || {};
+
+    /**
+    Created Degree Meters from entries list
+    @method FillElementsByDegree
+    @for RadSet  
+    **/
+    _x.FillElementsByDegree = function FillElementsByDegree(ID, elements) {
+        var innerMeter = &quot;&lt;span class=\&quot;InnerMeter\&quot;&gt;&lt;/span&gt;&quot;;
+        var format = &quot;&lt;li onclick=\&quot;RadSet.Select(null,{0});\&quot;&gt;{0}&lt;div class=&#x27;meter Hand&#x27; title=&#x27;{1}&#x27;&gt;&lt;span class=&#x27;Degree-{0}&#x27; style=&#x27;width: {2}%&#x27;&gt;&quot;;
+        format += innerMeter + &quot;&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;&quot;;
+
+        var listElement$ = $(document.getElementById(ID));
+
+        var degreeList = _x.GetDegreeList(elements);
+        var sorted = degreeList.sort(function (a, b) {
+            return (a.Degree - b.Degree);
+        });
+
+        var maxEntriesCount = 0;
+        for (var i = 0; i &lt; sorted.length; i++) {
+            if (sorted[i] !== undefined) {
+                if (maxEntriesCount &lt; sorted[i].Count) {
+                    maxEntriesCount = sorted[i].Count;
+                }
+            }
+        }
+
+        var count = sorted.length;
+        var str = &quot;&quot;;
+        for (var c = 0; c &lt; count; c++) {
+            var deg = sorted[c];
+            if (deg !== undefined) {
+                var per = deg.Count / maxEntriesCount * 100;
+                var tit = deg.Degree + &quot;: &quot; + deg.Count + &quot; (0 selected)&quot;; //.format(per.toFixed(2));
+                str += format.format(deg.Degree, tit, per.toFixed(2));
+            }
+        }
+        listElement$.append(str);
+        _x.log(&quot;inserted Elements of Degree list &quot;);
+        return sorted;
+    };
+
+    /**
+    Created Cardinality Meters from Category list
+    @method FillCardinality
+    @for RadSet  
+    **/
+    _x.FillCardinality = function FillCardinality(ID, catList) {
+        var innerMeter = &quot;&lt;span class=\&quot;InnerMeter\&quot;&gt;&lt;/span&gt;&quot;;
+        var format = &quot;&lt;li onclick=\&quot;RadSet.Select(&#x27;{0}&#x27;,-1);\&quot;&gt;{0}&lt;div class=&#x27;meter Hand&#x27; title=&#x27;{1}&#x27;&gt;&lt;span class=&#x27;{0}&#x27; style=&#x27;width: {2}%&#x27;&gt;&quot;;
+        format += innerMeter + &quot;&lt;/span&gt;&lt;/div&gt;&lt;/li&gt;&quot;;
+        var listElement$ = $(document.getElementById(ID));
+
+        var catListNameAndCount = [];
+        for (var idx = 0; idx &lt; catList.length; idx++) {
+            catListNameAndCount.push({ Name: catList[idx].Name, Count: catList[idx].Count });
+        }
+
+        var sorted = catListNameAndCount.sort(function (a, b) {
+            return (a.Count - b.Count);
+        });
+        var maxEntries = sorted[sorted.length - 1].Count;
+
+        var count = sorted.length;
+        //var sum = sorted.reduce(function (a, b) { return a + b.Count; }, 0);
+
+
+
+        var str = &quot;&quot;;
+        for (var c = sorted.length - 1; c &gt;= 0; c--) {
+            var cat = sorted[c];
+            var per = cat.Count / maxEntries * 100;
+            var tit = cat.Name + &quot;: &quot; + cat.Count + &quot; (0 selected)&quot;;//.format(per.toFixed(2));
+            str += format.format(cat.Name, tit, per.toFixed(2));
+        }
+        listElement$.append(str);
+        _x.log(&quot;inserted Set of Cardinality list &quot;);
+        return sorted;
+    };
+
+
+    /**
+    Created Entries Table
+    @method FillSelectedElements
+    @for RadSet  
+    **/
+    _x.FillSelectedElements = function FillSelectedElements(tabID, selElements) {
+        var table$ = $(document.getElementById(tabID));
+        var countHeaders = _x.options.ListOfVisableProps.length;
+        //header
+        var header = &quot;&lt;thead&gt;&lt;tr&gt;&quot;;
+        for (var i = 0; i &lt; countHeaders; i++) {
+            header += &quot;&lt;th&gt;{0}&lt;/th&gt;&quot;.format(_x.options.ListOfVisableProps[i]);
+        }
+        header += &quot;&lt;/tr&gt;&lt;/thead&gt;&quot;;
+
+        var rows = 0;
+        //body
+        var body = &quot;&lt;tbody&gt;&quot;;
+        var countSelEle = selElements.length;
+        for (var e = 0; e &lt; countSelEle; e++) {
+            var entry = selElements[e];
+            var cls = entry.Cats.join(&quot; &quot;);
+            cls += &quot; Degree-&quot; + entry.Cats.length;
+            body += &quot;&lt;tr id=&#x27;{1}&#x27; class=&#x27;{0}&#x27;&gt;&quot;.format(cls, entry.ID);
+
+            for (var i = 0; i &lt; countHeaders; i++) {
+                var curProp = _x.options.ListOfVisableProps[i];
+                if (typeof entry[curProp] === &quot;function&quot;) {
+                    body += &quot;&lt;td&gt;{0}&lt;/td&gt;&quot;.format(entry[curProp].call(entry));
+                } else {
+                    body += &quot;&lt;td&gt;{0}&lt;/td&gt;&quot;.format(entry[curProp]);
+                }
+            }
+            body += &quot;&lt;/tr&gt;&quot;;
+            rows += 1;
+        }
+        body += &quot;&lt;/tbody&gt;&quot;;
+
+        table$.append(header);
+        table$.append(body);
+
+        _x.log(&quot;inserted Selected Elements list &quot;);
+    };
+
+    /**
+    Highlight Selected Entries in Cardiality Meters
+    @method ShowCategoryInCardiality
+    @for RadSet  
+    **/
+    _x.ShowCategoryInCardiality = function ShowCategoryInCardiality() {
+        var options = _x.options;
+        $(&quot;#&quot; + options.DivSetOfCardinalityID + &quot; .HighLight .InnerMeter&quot;).css(&quot;width&quot;, &quot;0&quot;);
+        $(&quot;#&quot; + options.DivSetOfCardinalityID + &quot; .HighLight&quot;).removeClass(&quot;HighLight&quot;);
+
+        var sortedCatList = _x.ElementsByCardinality;
+        var entries = _x.GetEntriesFromIDs(_x.CurrentSelection.Entries);
+        var selectedCatList = _x.GetEntriesGroupedByCategory(entries);
+
+        for (var i = sortedCatList.length - 1; i &gt;= 0; i--) {
+            var c = sortedCatList[i];
+            if (selectedCatList[c.Name] !== undefined) {
+                var selC = selectedCatList[c.Name];
+                var p = (selC.Count / c.Count * 100).toFixed(2) + &quot;%&quot;;
+                var el = $(&quot;#&quot; + options.DivSetOfCardinalityID + &quot; .&quot; + c.Name);
+                el.addClass(&quot;HighLight&quot;);
+                el.find(&quot;.InnerMeter&quot;).css(&quot;width&quot;, p);
+
+                //update selected in tooltip
+                var title = el.parent().attr(&quot;title&quot;);
+                title = title.substring(0, title.indexOf(&quot;(&quot;)) + &quot;(&quot; + selC.Count + &quot; selected)&quot;;
+                el.parent().attr(&quot;title&quot;, title);
+            }
+        }
+
+    };
+
+    /**
+    Highlight Selected Entries in Degree Meters
+    @method ShowCategoryInDegree
+    @for RadSet  
+    **/
+    _x.ShowCategoryInDegree = function ShowCategoryInDegree() {
+        var options = _x.options;
+        $(&quot;#&quot; + options.DivElementsByDegreeID + &quot; .HighLight .InnerMeter&quot;).css(&quot;width&quot;, &quot;0&quot;);
+        $(&quot;#&quot; + options.DivElementsByDegreeID + &quot; .HighLight&quot;).removeClass(&quot;HighLight&quot;);
+
+        var sortedDegreeList = _x.ElementsByDegree;
+        var entries = _x.GetEntriesFromIDs(_x.CurrentSelection.Entries);
+        var selectedDegreeList = _x.GetDegreeList(entries);
+
+        for (var i = sortedDegreeList.length - 1; i &gt;= 0; i--) {
+            var d = sortedDegreeList[i];
+            if (d !== undefined &amp;&amp; selectedDegreeList[d.Degree] !== undefined) {
+                var selD = selectedDegreeList[d.Degree];
+                var p = (selD.Count / d.Count * 100).toFixed(2) + &quot;%&quot;;
+                var el = $(&quot;#&quot; + options.DivElementsByDegreeID + &quot; .Degree-&quot; + d.Degree);
+                el.addClass(&quot;HighLight&quot;);
+                el.find(&quot;.InnerMeter&quot;).css(&quot;width&quot;, p);
+
+                //update selected in tooltip
+                var title = el.parent().attr(&quot;title&quot;);
+                title = title.substring(0, title.indexOf(&quot;(&quot;)) + &quot;(&quot; + selD.Count + &quot; selected)&quot;;
+                el.parent().attr(&quot;title&quot;, title);
+            }
+        }
+    }
+
+    /**
+    Highlight Selected Entries in EntriesTable
+    @method ShowCategoryInEntries
+    @for RadSet  
+    **/
+    _x.ShowCategoryInEntries = function ShowCategoryInEntries() {
+        $(&quot;.ShowEntry&quot;).removeClass(&quot;ShowEntry&quot;);
+
+        var nodes = $.map(_x.CurrentSelection.Entries, function (i) { return document.getElementById(i) });
+        $(nodes).addClass(&quot;ShowEntry&quot;);
+
+        var eleSelRows = $(&quot;#lblSelectedRows&quot;);
+        eleSelRows.text($(&quot;table .ShowEntry&quot;).length + &quot; items&quot;);
+    };
+
+    /**
+    Create Tooltip for Histogram
+    @method CreateTooltipForHistogram
+    @return String
+    @for RadSet  
+    **/
+    function CreateTooltipForHistogram(degree, count, selCount) {
+        var tooltip = &quot;items&quot;;
+        if (degree &gt; 1) {
+            tooltip += &quot; shared with &quot; + degree + &quot; other sets: &quot; + count;
+        } else {
+            tooltip += &quot; unique to this set: &quot; + count;
+        }
+        if (selCount &gt; 0) {
+            tooltip += &quot;\n&quot; + selCount + &quot; items selected (&quot; + (selCount / count * 100).toFixed(2) + &quot;%) &quot;;
+        }
+        return tooltip;
+    }
+
+    /**
+    Create Tooltip for ConnectionArc 
+    @method CreateTooltipForConnectionArc
+    @return String
+    @for RadSet  
+    **/
+    function CreateTooltipForConnectionArc(cat1, cat2, count, selCount) {
+        var tooltip = cat1 + &quot; - &quot; + cat2;
+        tooltip += &quot;\n&quot; + count + &quot; shared items &quot;;
+        if (selCount &gt; 0) {
+            tooltip += &quot; \n&quot; + selCount + &quot; selected( &quot; + (selCount / count * 100).toFixed(2) + &quot;% of the shared items)&quot;;
+        }
+        //TODO: Overlap missing
+        return tooltip;
+    }
+
+
+    function GetMaxConnectedArcCount() {
+        var maxCount = 0;
+        for (var cIdx = _x.CatList.length - 1; cIdx &gt;= 0; cIdx--) {
+            var cat = _x.CatList[cIdx];
+            for (var ccIdx = cat.ConnectedCats.length - 1; ccIdx &gt;= 0; ccIdx--) {
+                var cc = cat.ConnectedCats[ccIdx];
+                if (cc.Count &gt; maxCount) {
+                    maxCount = cc.Count;
+                }
+            }
+        }
+        return maxCount;
+    }
+
+    /**
+    This is the Draw function, it create the Radial Sets View with all Sectors,Histograms,ConnectionArcs and the SelectionHighlights
+    @method Draw
+    @for RadSet  
+    **/
+    _x.Draw = function Draw() {
+
+        var options = _x.options;
+
+        //Delete previous svg
+        var svg = $(&quot;svg&quot;);
+        if (svg.length &gt; 0) {
+            d3.select(svg[0]).remove();
+        }
+
+        /*VARS*/
+        var ADD_TEXTS = true;
+        var HistogramSelectionStrokeWidth = 0;
+
+
+        var winHeight = $(&quot;#mainContent&quot;).height();
+        var winWidth = $(&quot;#mainContent&quot;).width();
+        var center = { y: winHeight / 2, x: winWidth / 2 };
+        var paddingToBody = 150;
+        var percentOfWhiteSpace = 5;
+
+        var r = 0;
+        if ((winWidth - paddingToBody) &lt;= (winHeight - paddingToBody)) {
+            r = winWidth - paddingToBody;
+        } else {
+            r = winHeight - paddingToBody;
+        }
+        r = r / 2;
+        //var r = Math.min(winWidth - paddingToBody, winHeight - paddingToBody) / 2;
+        var labelr = r + 10; // radius for label anchor
+
+        var maxDegreeNumbers = _x.ElementsByDegree.length - 1;
+        var innerRadius = r * 0.8;
+        var outerRadius = r;
+        var radialRingSize = outerRadius - innerRadius;
+
+        var histoRadSize = radialRingSize / maxDegreeNumbers;
+
+        var radialset = document.getElementById(&quot;radialset&quot;);
+        var PI = Math.PI;
+
+        var whiteSpaceSize = 2 * Math.PI * (percentOfWhiteSpace / 100) / _x.CatList.length / 2; /// divide by 2 because easier to create the spaces later
+
+        var categoryStartAngles = {};
+        var categoryEndAngles = {};
+
+        var donut = d3.layout.pie()
+            .sort(function (a, b) { return b.SortOrder &lt; a.SortOrder ? -1 : b.SortOrder &gt; a.SortOrder ? 1 : 0; });
+
+        if (_x.ScaleMode === _x.ScaleModes.Compact) {
+            donut.value(function (d) { return d.MaxCountInHistogram(); });
+        } else if (_x.ScaleMode === _x.ScaleModes.SetSize) {
+            donut.value(function (d) { return d.Count; });
+        } else {
+            donut.value(function (d) { return d.Count; });
+        }
+
+
+        var arc = d3.svg.arc()
+            .innerRadius(innerRadius)
+            .outerRadius(outerRadius)
+            .startAngle(function (d) {
+                var cname = d.data.Name;
+                var x = d.startAngle + whiteSpaceSize;
+                categoryStartAngles[cname] = x;
+                return x;
+            })
+            .endAngle(function (d) {
+                var cname = d.data.Name;
+                var x = d.endAngle - whiteSpaceSize;
+                categoryEndAngles[cname] = x;
+                return x;
+            });
+
+        var vis = d3.select(radialset)
+            .append(&quot;svg:svg&quot;)
+            .data([_x.CatList])
+            .attr(&quot;width&quot;, winWidth - 50)
+            .attr(&quot;height&quot;, winHeight - 50);
+
+        var arcs = vis.selectAll(&quot;g.arc&quot;)
+            .data(donut)
+            .enter().append(&quot;svg:g&quot;)
+            .attr(&quot;class&quot;, function (d, i) { return &quot;sector &quot; + d.data.Name; })
+            .attr(&quot;id&quot;, function (d, i) { return &quot;sector_&quot; + d.data.Name; })
+            .attr(&quot;transform&quot;, &quot;translate(&quot; + (center.x) + &quot;,&quot; + (center.y) + &quot;)&quot;);
+
+        var sector_paths = arcs.append(&quot;svg:path&quot;)
+            .on(&quot;click&quot;, function (d, i) {
+                _x.Select(d.data.Name, -1);
+            })
+            .attr(&quot;class&quot;, function (d, i) { return d.data.Name + &quot; Hand Sector&quot;; })
+            .attr(&quot;fill&quot;, options.SectorColor)
+            .attr(&quot;stroke&quot;, &quot;black&quot;)
+            .attr(&quot;stroke-width&quot;, &quot;1&quot;)
+            .attr(&quot;d&quot;, arc);
+
+        if (options.EnableHover) {
+            sector_paths.on(&quot;mouseover&quot;, function (d, i) {
+                d3.select(this).style(&quot;fill&quot;, options.HoverColor);
+            })
+              .on(&quot;mouseout&quot;, function (d, i) {
+                  d3.select(this).style(&quot;fill&quot;, options.SectorColor);
+              });
+        }
+
+        var selectionGrouped = null;
+        if (_x.CurrentSelection !== null) {
+            var selEntries = _x.GetEntriesFromIDs(_x.CurrentSelection.Entries)
+            selectionGrouped = _x.GetEntriesGroupedByCategoryAndDegree(selEntries, true);
+        }
+
+        sector_paths.append(&quot;svg:title&quot;)
+          .text(function (d, i) {
+
+              var tooltip = d.data.Name + &quot;\n&quot; + d.data.Count + &quot; items \n&quot;;
+              if (selectionGrouped !== null) {
+                  if (selectionGrouped[d.data.Name] !== undefined) {
+                      var selItems = selectionGrouped[d.data.Name].Count;
+                      tooltip += selItems + &quot; items selected (&quot; + (selItems / d.data.Count * 100).toFixed(2) + &quot;%)&quot;;
+                  }
+              }
+              return tooltip;
+          });
+
+
+
+        //delete all selected histograms
+        d3.selectAll(&quot;path.HistogramSelection&quot;).remove();
+
+        //create histogram arcs
+        for (var cIdx = _x.CatList.length - 1; cIdx &gt;= 0; cIdx--) {
+            var c = _x.CatList[cIdx];
+            var histos = c.Histograms;
+
+            if (categoryStartAngles[c.Name] === undefined) {
+                continue;
+            }
+
+            var cStartAngle = categoryStartAngles[c.Name];
+            var cEndAngle = categoryEndAngles[c.Name];
+            var cAngleDiff = cEndAngle - cStartAngle;
+            var middleAngle = cAngleDiff / 2; //middle of angle
+
+            _x.CatList[cIdx].StartAngle = cStartAngle;
+            _x.CatList[cIdx].EndAngle = cEndAngle;
+            _x.CatList[cIdx].MiddleAngle = cStartAngle + middleAngle;
+
+            var histos = histos.sort(function (a, b) {
+                return (a.Degree - b.Degree);
+            });
+            var histosSortByCounts = histos.sort(function (a, b) {
+                return (b.Count - a.Count);
+            });
+
+            var histoDrawObjs = [];
+            var histoSelectionDrawObjs = [];
+
+            for (var hIdx = 0; hIdx &lt; histos.length; hIdx++) {
+                var h = histos[hIdx];
+
+                var maxHistoCounterInCat = histosSortByCounts[0].Count;
+
+                var divByCount = cAngleDiff / maxHistoCounterInCat;
+                var diffAngleForHisto = divByCount * h.Count;
+                diffAngleForHisto = diffAngleForHisto / 2;
+
+                var data = {
+                    Name: c.Name,
+                    Degree: h.Degree,
+                    Count: h.Count,
+                    SelCount: 0,
+                    InnerRadius: (outerRadius - (histoRadSize * h.Degree)),
+                    OuterRadius: (outerRadius - (histoRadSize * (h.Degree - 1))),
+                    StartAngle: (cStartAngle + middleAngle - diffAngleForHisto),
+                    EndAngle: (cStartAngle + middleAngle + diffAngleForHisto)
+                };
+
+                //calculate Selection of Histogram
+                if (selectionGrouped !== null &amp;&amp; selectionGrouped[c.Name] !== undefined &amp;&amp; selectionGrouped[c.Name][h.Degree] !== undefined) {
+                    var selObj = selectionGrouped[c.Name][h.Degree];
+                    if (selObj !== undefined) {
+                        var sel = $.extend({}, data);
+                        var diffAngleForHistoSelection = diffAngleForHisto / h.Count * selObj.Count;
+
+
+
+                        if (options.SelectionAlignHistogram === &quot;center&quot;) {
+                            sel.StartAngle = (cStartAngle + middleAngle - diffAngleForHistoSelection);
+                            sel.EndAngle = (cStartAngle + middleAngle + diffAngleForHistoSelection);
+                        } else if (options.SelectionAlignHistogram === &quot;left&quot;) {
+                            sel.StartAngle = (cStartAngle + middleAngle - diffAngleForHisto);
+                            sel.EndAngle = (cStartAngle + middleAngle - diffAngleForHisto + (diffAngleForHistoSelection * 2));
+                        } else if (options.SelectionAlignHistogram === &quot;right&quot;) {
+                            sel.StartAngle = (cStartAngle + middleAngle + diffAngleForHisto - (diffAngleForHistoSelection * 2));
+                            sel.EndAngle = (cStartAngle + middleAngle + diffAngleForHisto);
+                        }
+
+                        data.SelCount = selObj.Count;
+                        sel.SelCount = selObj.Count;
+
+                        histoSelectionDrawObjs.push(sel);
+                    }
+                }
+
+                histoDrawObjs.push(data);
+            }
+
+            var HistArc = d3.svg.arc()
+              .innerRadius(function (d, i) { return d.InnerRadius; })
+              .outerRadius(function (d, i) { return d.OuterRadius; })
+              .startAngle(function (d, i) { return d.StartAngle; })
+              .endAngle(function (d, i) { return d.EndAngle; });
+
+            var ele = document.getElementById(&quot;sector_&quot; + c.Name);
+            var histogramPaths = d3.select(ele)
+              .selectAll(&quot;path.Histogram&quot;)
+              .data(histoDrawObjs)
+              .enter()
+              .append(&quot;path&quot;)
+              .on(&quot;click&quot;, function (d, i) {
+                  _x.Select(d.Name, d.Degree);
+              })
+              .attr(&quot;stroke&quot;, &quot;black&quot;)
+              .attr(&quot;stroke-width&quot;, &quot;1&quot;)
+              .attr(&quot;fill&quot;, options.HistoColor)
+              .attr(&quot;class&quot;, function (d, i) { return &quot;Hand Histogram Degree-&quot; + d.Degree; })
+              .attr(&quot;d&quot;, HistArc);
+
+            histogramPaths.append(&quot;svg:title&quot;)
+              .text(function (d, i) {
+                  return CreateTooltipForHistogram(d.Degree, d.Count, d.SelCount);
+              });
+
+            if (selectionGrouped !== null &amp;&amp; histoSelectionDrawObjs.length &gt; 0) {
+                var selectedPaths = d3.select(ele)
+                  .selectAll(&quot;path.HistogramSelection&quot;)
+                  .data(histoSelectionDrawObjs)
+                  .enter()
+                  .append(&quot;path&quot;)
+                  .on(&quot;click&quot;, function (d, i) {
+                      _x.Select(d.Name, d.Degree);
+                  })
+                  .attr(&quot;stroke&quot;, &quot;black&quot;)
+                  .attr(&quot;stroke-width&quot;, HistogramSelectionStrokeWidth)
+                  .attr(&quot;class&quot;, function (d, i) { return &quot;Hand HistogramSelection Degree-&quot; + d.Degree; })
+                  .attr(&quot;d&quot;, HistArc);
+
+                selectedPaths.append(&quot;svg:title&quot;)
+                  .text(function (d, i) {
+                      return CreateTooltipForHistogram(d.Degree, d.Count, d.SelCount);
+                  });
+            }
+
+            if (options.EnableHover) {
+                histogramPaths.on(&quot;mouseover&quot;, function (d, i) {
+                    d3.select(this).style(&quot;fill&quot;, options.HoverColor);
+                })
+                .on(&quot;mouseout&quot;, function (d, i) {
+                    d3.select(this).style(&quot;fill&quot;, null);
+                });
+            }
+
+        }
+
+        if (ADD_TEXTS) {
+            arcs.append(&quot;svg:text&quot;)
+              .attr(&quot;transform&quot;, function (d) {
+                  var c = arc.centroid(d),
+                      x = c[0],
+                      y = c[1],
+                      h = Math.sqrt(x * x + y * y);
+                  return &quot;translate(&quot; + (x / h * labelr) + &#x27;,&#x27; +
+                     (y / h * labelr) + &quot;)&quot;;
+              })
+              .attr(&quot;dy&quot;, &quot;.35em&quot;)
+              .attr(&quot;text-anchor&quot;, function (d) {
+                  return (d.endAngle + d.startAngle) / 2 &gt; Math.PI ?
+                      &quot;end&quot; : &quot;start&quot;;
+              })
+              .text(function (d, i) {
+                  return d.data.Name;
+              });
+        }
+
+
+        //draw arcs between categories
+
+        /**
+        @class ConnectionArc
+        @constructor
+        @private
+        **/
+        function ConnectionArc(x, y, ir, or, sa, ea, cat1, cat2) {
+            /**
+            @property x
+            @for ConnectionArc
+            @type Integer
+            **/
+            this.x = x;
+            /**
+            @property y
+            @for ConnectionArc
+            @type Integer
+            **/
+            this.y = y;
+            /**
+            @property innerRadius
+            @for ConnectionArc
+            @type Float
+            **/
+            this.innerRadius = ir;
+            /**
+            @property outerRadius
+            @for ConnectionArc
+            @type Float
+            **/
+            this.outerRadius = or;
+            /**
+            @property startAngle
+            @for ConnectionArc
+            @type Float
+            **/
+            this.startAngle = sa;
+            /**
+            @property endAngle
+            @for ConnectionArc
+            @type Float
+            **/
+            this.endAngle = ea;
+            /**
+            @property Cat1
+            @for ConnectionArc
+            @type String
+            **/
+            this.Cat1 = cat1;
+            /**
+            @property Cat2
+            @for ConnectionArc
+            @type String
+            **/
+            this.Cat2 = cat2;
+            /**
+            @property Count
+            @for ConnectionArc
+            @type Integer
+            **/
+            this.Count = 0;
+            /**
+            @property SelCount
+            @for ConnectionArc
+            @type Integer
+            **/
+            this.SelCount = 0;
+            /**
+            @property Name
+            @for ConnectionArc
+            @type String
+            **/
+            this.Name = cat1 + &quot;-&quot; + cat2;
+        }
+
+
+        var connectedArcs = [];
+        var selectedConnectedArcs = [];
+        var maxConnectedArcCount = GetMaxConnectedArcCount();
+
+        for (var cIdx = _x.CatList.length - 1; cIdx &gt;= 0; cIdx--) {
+            var c = _x.CatList[cIdx];
+            var connected = c.ConnectedCats;
+
+            var conCatNames = [];
+            for (var i = connected.length - 1; i &gt;= 0; i--) {
+                conCatNames.push(connected[i].Name);
+            }
+
+            for (var cIdx2 = _x.CatList.length - 1; cIdx2 &gt;= 0; cIdx2--) {
+                var c2 = _x.CatList[cIdx2];
+
+                if (c.Name === c2.Name) { //|| conCatNames.indexOf(c2.Name) === -1){
+                    continue;
+                }
+
+                // skip arc there are already made
+                var skipArc = false;
+                for (var aidx = 0; aidx &lt; connectedArcs.length; aidx++) {
+                    var ca = connectedArcs[aidx];
+                    if ((ca.Cat1 === c.Name &amp;&amp; ca.Cat2 === c2.Name) || (ca.Cat1 === c2.Name &amp;&amp; ca.Cat2 === c.Name)) {
+                        skipArc = true;
+                    }
+                }
+                var connection = null;
+                for (var i = 0; i &lt; connected.length; i++) {
+                    if (connected[i].Name == c2.Name) {
+                        connection = connected[i];
+                        break;
+                    }
+                }
+                if (skipArc || connection === null) {
+                    continue;
+                }
+
+
+                var th1 = (c.StartAngle + c.EndAngle) / 2;
+                var th2 = (c2.StartAngle + c2.EndAngle) / 2;
+                var midAngle = (th1 + th2) / 2;
+                var startAngle = th2 + (Math.PI / 2);
+                var endAngle = th1 + (3 * Math.PI / 2);
+                var range = th2 - th1;
+                if (range === Math.PI) {
+                    range *= 0.99;
+                }
+                if (range &gt; Math.PI) {
+                    startAngle -= Math.PI;
+                    endAngle -= Math.PI;
+                }
+                var shift;
+                if (range &gt; (Math.PI / 10)) {
+                    shift = 0.1;
+                } else {
+                    if (range &lt; (PI / 20)) {
+                        shift = 0;
+                    } else {
+                        shift = (range - (PI / 20)) / PI / 200;
+                    }
+                }
+                var tr = Math.tan(range / 2) * (innerRadius + shift);
+                var rad = Math.sqrt((tr * tr) + (shift * shift));
+                var rho = (innerRadius + shift) / Math.cos(range / 2);
+                var thickness = 6 * connection.Count / maxConnectedArcCount;
+
+                var x = (rho * Math.sin(midAngle));
+                var y = (-rho * Math.cos(midAngle));
+                var rad1 = rad - (thickness / 2);
+                var rad2 = rad + (thickness / 2);
+
+                var conArc = new ConnectionArc(x, y, rad1, rad2, startAngle, endAngle, c.Name, c2.Name);
+                conArc.Count = connection.Count;
+
+
+                if (_x.CurrentSelection !== null) {
+                    var selConArc = $.extend({}, conArc);
+                    var selCount = connection.GetNumberOfConnected(_x.CurrentSelection.Entries);
+
+                    selCount += (selCount &gt; 0) ? 1 : 0; // plus 1 because itself also selected , but only when selection is available
+
+                    conArc.SelCount = selCount;
+                    selConArc.SelCount = selCount;
+
+                    var selThickness = 6 * selCount / maxConnectedArcCount;
+
+                    if (options.SelectionAlignConnectionArc === &quot;center&quot;) {
+                        selConArc.innerRadius = (rad - (selThickness / 2));
+                        selConArc.outerRadius = (rad + (selThickness / 2));
+                    } else if (options.SelectionAlignConnectionArc === &quot;left&quot;) {
+                        selConArc.innerRadius = (rad - (thickness / 2));
+                        selConArc.outerRadius = (rad - (thickness / 2) + selThickness);
+                    } else if (options.SelectionAlignConnectionArc === &quot;right&quot;) {
+                        selConArc.innerRadius = (rad + (thickness / 2) - selThickness);
+                        selConArc.outerRadius = (rad + (thickness / 2));
+                    }
+                    selectedConnectedArcs.push(selConArc);
+                }
+
+                connectedArcs.push(conArc);
+            }
+        }
+
+        //draw arcs
+        var arc = d3.svg.arc()
+          .innerRadius(function (d, i) { return d.innerRadius; })
+          .outerRadius(function (d, i) { return d.outerRadius; })
+          .startAngle(function (d, i) { return d.startAngle; })
+          .endAngle(function (d, i) { return d.endAngle; });
+
+        vis.append(&quot;g&quot;)
+            .attr(&quot;id&quot;, &quot;ConnectionArcs&quot;)
+            .attr(&quot;class&quot;, &quot;ConnectionArcs&quot;)
+            .attr(&quot;transform&quot;, &quot;translate(&quot; + (center.x) + &quot;,&quot; + (center.y) + &quot;)&quot;);
+
+        var connectionPaths = d3.select(&quot;g.ConnectionArcs&quot;)
+          .selectAll(&quot;path.ConnectionArc&quot;)
+          .data(connectedArcs)
+          .enter()
+          .append(&quot;path&quot;)
+          .attr(&quot;stroke&quot;, &quot;black&quot;)
+          .attr(&quot;stroke-width&quot;, &quot;0&quot;)
+          .attr(&quot;fill&quot;, options.ConnectionArcColor)
+          .attr(&quot;class&quot;, function (d, i) { return &quot;Hand ConnectionArc &quot; + d.Name + &quot; {0} {1}&quot;.format(d.Cat1, d.Cat2); })
+          .attr(&quot;transform&quot;, function (d, i) {
+              return &quot;translate(&quot; + (d.x) + &quot;,&quot; + (d.y) + &quot;)&quot;;
+          })
+          .on(&quot;click&quot;, function (d, i) {
+              _x.SelectArc(d.Cat1, d.Cat2);
+          })
+          .attr(&quot;d&quot;, arc);
+
+        connectionPaths.append(&quot;svg:title&quot;)
+          .text(function (d, i) {
+              return CreateTooltipForConnectionArc(d.Cat1, d.Cat2, d.Count, d.SelCount);
+          });
+
+        if (_x.CurrentSelection !== null) {
+            var selConnectionPaths = d3.select(&quot;g.ConnectionArcs&quot;)
+                .selectAll(&quot;path.SelectedConnectionArc&quot;)
+                .data(selectedConnectedArcs)
+                .enter()
+                .append(&quot;path&quot;)
+                .attr(&quot;stroke&quot;, &quot;black&quot;)
+                .attr(&quot;stroke-width&quot;, &quot;0&quot;)
+                .attr(&quot;fill&quot;, options.HighlightColor)
+                .attr(&quot;class&quot;, function (d, i) { return &quot;Hand SelectedConnectionArc &quot; + d.Name + &quot; {0} {1}&quot;.format(d.Cat1, d.Cat2); })
+                .attr(&quot;transform&quot;, function (d, i) {
+                    return &quot;translate(&quot; + (d.x) + &quot;,&quot; + (d.y) + &quot;)&quot;;
+                })
+                .on(&quot;click&quot;, function (d, i) {
+                    _x.SelectArc(d.Cat1, d.Cat2);
+                })
+                .attr(&quot;d&quot;, arc);
+
+            selConnectionPaths.append(&quot;svg:title&quot;)
+              .text(function (d, i) {
+                  return CreateTooltipForConnectionArc(d.Cat1, d.Cat2, d.Count, d.SelCount);
+              });
+        }
+
+        if (options.EnableHover) {
+            connectionPaths.on(&quot;mouseover&quot;, function (d, i) {
+                d3.select(this).style(&quot;fill&quot;, options.HoverColor);
+            })
+            .on(&quot;mouseout&quot;, function (d, i) {
+                d3.select(this).style(&quot;fill&quot;, null);
+            });
+        }
+
+        _x.log(&quot;created Sectors and Histograms&quot;);
+    };
+
+
+    _x.CreateStyleTag = function () {
+        var style = &quot;&lt;style&gt;&quot;;
+        var options = _x.options;
+
+        var highlightStyles = &quot;.HighLight .InnerMeter{background-color: &quot; + options.HighlightColor + &quot; !important;} &quot;;
+        highlightStyles += &quot;.HighLight{fill: &quot; + options.HighlightColor + &quot; !important; z-index: 5000;} &quot;;
+        highlightStyles += &quot;.HighLightCategory{fill: &quot; + options.HighlightColor + &quot; !important} &quot;;
+        highlightStyles += &quot;.HighLightHistogram{fill: &quot; + options.HighlightColor + &quot; !important} &quot;;
+        highlightStyles += &quot;.HistogramSelection{fill: &quot; + options.HighlightColor + &quot; !important} &quot;;
+
+        style += highlightStyles;
+
+        for (var c = 0; c &lt; _x.options.HistoColors.length; c++) {
+            style += &quot;.Degree-&quot; + (c + 1) + &quot;{ fill:#&quot; + _x.options.HistoColors[c] + &quot;;}&quot;;
+        }
+
+        style += &quot;&lt;/style&gt;&quot;;
+
+        $(&quot;head&quot;).append(style);
+    }
+
+    return _x;
+}(window, document, jQuery));
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

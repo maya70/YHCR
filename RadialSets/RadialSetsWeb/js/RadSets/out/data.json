@@ -1,0 +1,1561 @@
+{
+    "project": {},
+    "files": {
+        "RadSets.js": {
+            "name": "RadSets.js",
+            "modules": {},
+            "classes": {
+                "Options": 1
+            },
+            "fors": {
+                "Options": 1,
+                "RadSet": 1
+            },
+            "namespaces": {}
+        },
+        "RadSetsConverter.js": {
+            "name": "RadSetsConverter.js",
+            "modules": {
+                "RadSets": 1,
+                "Converter": 1
+            },
+            "classes": {
+                "Entry": 1,
+                "Category": 1,
+                "ConnectedCategory": 1,
+                "Histogram": 1
+            },
+            "fors": {
+                "Category": 1,
+                "RadSet": 1
+            },
+            "namespaces": {}
+        },
+        "RadSetsDraw.js": {
+            "name": "RadSetsDraw.js",
+            "modules": {
+                "Draw": 1
+            },
+            "classes": {
+                "ConnectionArc": 1
+            },
+            "fors": {
+                "RadSet": 1,
+                "ConnectionArc": 1
+            },
+            "namespaces": {}
+        },
+        "RadSetsSelector.js": {
+            "name": "RadSetsSelector.js",
+            "modules": {
+                "Selector": 1
+            },
+            "classes": {
+                "RadSet": 1,
+                "Selection": 1,
+                "UnionSelection": 1,
+                "IntersectSelection": 1,
+                "SubtractSelection": 1
+            },
+            "fors": {
+                "RadSet": 1
+            },
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "RadSets": {
+            "name": "RadSets",
+            "submodules": {
+                "Converter": 1,
+                "Draw": 1,
+                "Selector": 1
+            },
+            "classes": {
+                "RadSet": 1,
+                "Options": 1,
+                "Entry": 1,
+                "Category": 1,
+                "ConnectedCategory": 1,
+                "Histogram": 1,
+                "ConnectionArc": 1,
+                "Selection": 1,
+                "UnionSelection": 1,
+                "IntersectSelection": 1,
+                "SubtractSelection": 1
+            },
+            "fors": {
+                "Options": 1,
+                "RadSet": 1,
+                "Category": 1,
+                "ConnectionArc": 1
+            },
+            "namespaces": {},
+            "tag": "main",
+            "file": "RadSetsSelector.js",
+            "line": 161,
+            "description": "Module for web implementation of Radial Sets",
+            "itemtype": "main"
+        },
+        "Converter": {
+            "name": "Converter",
+            "submodules": {},
+            "classes": {
+                "Entry": 1,
+                "Category": 1,
+                "ConnectedCategory": 1,
+                "Histogram": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "RadSets",
+            "namespace": "",
+            "file": "RadSetsConverter.js",
+            "line": 211,
+            "description": "Module for web implementation of Radial Sets",
+            "tag": "main",
+            "itemtype": "main"
+        },
+        "Draw": {
+            "name": "Draw",
+            "submodules": {},
+            "classes": {
+                "ConnectionArc": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "RadSets",
+            "namespace": "",
+            "file": "RadSetsDraw.js",
+            "line": 560,
+            "description": "Module for web implementation of Radial Sets",
+            "tag": "main",
+            "itemtype": "main"
+        },
+        "Selector": {
+            "name": "Selector",
+            "submodules": {},
+            "classes": {
+                "RadSet": 1,
+                "Selection": 1,
+                "UnionSelection": 1,
+                "IntersectSelection": 1,
+                "SubtractSelection": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "RadSets",
+            "namespace": "",
+            "file": "RadSetsSelector.js",
+            "line": 161,
+            "description": "Module for web implementation of Radial Sets",
+            "tag": "main",
+            "itemtype": "main"
+        }
+    },
+    "classes": {
+        "RadSet": {
+            "name": "RadSet",
+            "shortname": "RadSet",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "namespace": "",
+            "file": "RadSetsSelector.js",
+            "line": 8,
+            "is_constructor": 1,
+            "submodule": "Selector"
+        },
+        "Options": {
+            "name": "Options",
+            "shortname": "Options",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "namespace": "",
+            "file": "RadSets.js",
+            "line": 14,
+            "is_constructor": 1
+        },
+        "Entry": {
+            "name": "Entry",
+            "shortname": "Entry",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "submodule": "Converter",
+            "namespace": "",
+            "file": "RadSetsConverter.js",
+            "line": 43,
+            "description": "Entry class",
+            "is_constructor": 1
+        },
+        "Category": {
+            "name": "Category",
+            "shortname": "Category",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "submodule": "Converter",
+            "namespace": "",
+            "file": "RadSetsConverter.js",
+            "line": 104,
+            "description": "Category class",
+            "is_constructor": 1
+        },
+        "ConnectedCategory": {
+            "name": "ConnectedCategory",
+            "shortname": "ConnectedCategory",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "submodule": "Converter",
+            "namespace": "",
+            "file": "RadSetsConverter.js",
+            "line": 175,
+            "description": "ConnectedCategory class",
+            "is_constructor": 1
+        },
+        "Histogram": {
+            "name": "Histogram",
+            "shortname": "Histogram",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "submodule": "Converter",
+            "namespace": "",
+            "file": "RadSetsConverter.js",
+            "line": 211,
+            "description": "Histogram class",
+            "is_constructor": 1
+        },
+        "ConnectionArc": {
+            "name": "ConnectionArc",
+            "shortname": "ConnectionArc",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "submodule": "Draw",
+            "namespace": "",
+            "file": "RadSetsDraw.js",
+            "line": 560,
+            "is_constructor": 1,
+            "access": "private",
+            "tagname": ""
+        },
+        "Selection": {
+            "name": "Selection",
+            "shortname": "Selection",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "submodule": "Selector",
+            "namespace": "",
+            "file": "RadSetsSelector.js",
+            "line": 16,
+            "is_constructor": 1
+        },
+        "UnionSelection": {
+            "name": "UnionSelection",
+            "shortname": "UnionSelection",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "submodule": "Selector",
+            "namespace": "",
+            "file": "RadSetsSelector.js",
+            "line": 51,
+            "is_constructor": 1
+        },
+        "IntersectSelection": {
+            "name": "IntersectSelection",
+            "shortname": "IntersectSelection",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "submodule": "Selector",
+            "namespace": "",
+            "file": "RadSetsSelector.js",
+            "line": 106,
+            "is_constructor": 1
+        },
+        "SubtractSelection": {
+            "name": "SubtractSelection",
+            "shortname": "SubtractSelection",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "RadSets",
+            "submodule": "Selector",
+            "namespace": "",
+            "file": "RadSetsSelector.js",
+            "line": 161,
+            "is_constructor": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "RadSets.js",
+            "line": 19,
+            "description": "Filename of the CSV file containing the Data",
+            "itemtype": "property",
+            "name": "File",
+            "type": "String",
+            "default": "\"ourdata.csv\"",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 27,
+            "description": "Maximum Number of Entries",
+            "itemtype": "property",
+            "name": "EntryLimit",
+            "type": "Integer",
+            "default": "1000",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 35,
+            "description": "Idicates if the selected entities will be writen in the log",
+            "itemtype": "property",
+            "name": "LogSelectionEntries",
+            "type": "Bool",
+            "default": "false",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 43,
+            "description": "ID from the table where the selected elements will be displayed",
+            "itemtype": "property",
+            "name": "TableSelectedEntitiesID",
+            "default": "\"tabSelEntities\"",
+            "type": "String",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 51,
+            "description": "ID of the div element where the sets of cardinality will be displayed",
+            "itemtype": "property",
+            "name": "DivSetOfCardinalityID",
+            "default": "\"setOfCardinality\"",
+            "type": "String",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 59,
+            "description": "ID from the table where the sets by degree will be displayed",
+            "itemtype": "property",
+            "name": "DivElementsByDegreeID",
+            "default": "\"elementsByDegree\"",
+            "type": "String",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 67,
+            "description": "ID for the log element - must be \"ul\"",
+            "itemtype": "property",
+            "name": "LogListElementID",
+            "default": "\"log\"",
+            "type": "String",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 75,
+            "description": "List of Property displayed in the Selected Entries View",
+            "itemtype": "property",
+            "name": "ListOfVisableProps",
+            "type": "List<String>",
+            "default": "[\"person_id\", \"age\", \"Sets\"]",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 83,
+            "description": "List of NonCategoires in CSV File",
+            "itemtype": "property",
+            "name": "ListOfNonCategories",
+            "type": "List<String>",
+            "default": "[\"person_id\", \"age\", \"other\"]",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 91,
+            "description": "List of Histogram Colors",
+            "itemtype": "property",
+            "name": "HistoColors",
+            "type": "List<String>",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 98,
+            "description": "Default Histogram color when no other colors are defined in \"HistoColors\"",
+            "itemtype": "property",
+            "name": "HistoColor",
+            "type": "String",
+            "default": "\"grey\"",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 106,
+            "description": "Color of the connection arcs",
+            "itemtype": "property",
+            "name": "ConnectionArcColor",
+            "type": "String",
+            "default": "\"lightgrey\"",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 114,
+            "description": "Color of the sectors",
+            "itemtype": "property",
+            "name": "SectorColor",
+            "type": "String",
+            "default": "\"lightgrey\"",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 122,
+            "description": "Indicates if the Hover effect is enabled",
+            "itemtype": "property",
+            "name": "EnableHover",
+            "type": "Bool",
+            "default": "false",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 130,
+            "description": "color of the hover effect , only when EnableHover",
+            "itemtype": "property",
+            "name": "HoverColor",
+            "type": "String",
+            "default": "\"red\"",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 138,
+            "description": "color of the highlighted/selected elements",
+            "itemtype": "property",
+            "name": "HighlightColor",
+            "type": "String",
+            "default": "\"red\"",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 146,
+            "description": "SortOrder of Categories",
+            "itemtype": "property",
+            "name": "CategoryOrder",
+            "type": "List<String>",
+            "default": "[\"Action\", \"Adventure\", \"Children\", \"Fantasy\", \"Musical\", \"War\", \"Comedy\", \"Romance\", \"Drama\", \"Documentary\", \"Western\", \"Noir\", \"Mystery\", \"Crime\", \"Horror\", \"Thriller\", \"SciFi\"]",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 154,
+            "description": "Indicates if Entries without Categories are ignored",
+            "itemtype": "property",
+            "name": "IgnoreEntriesWithoutCategories",
+            "type": "Bool",
+            "default": "true",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 162,
+            "description": "Indicates which align the selection will have in the histogram",
+            "itemtype": "property",
+            "name": "SelectionAlignHistogram",
+            "type": "String",
+            "default": "\"center\"",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 170,
+            "description": "Indicates which align the selection will have in the connection arc",
+            "itemtype": "property",
+            "name": "SelectionAlignConnectionArc",
+            "type": "String",
+            "default": "\"center\"",
+            "class": "Options",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 184,
+            "description": "Indicates how to scale the Radial Sets view",
+            "itemtype": "attribute",
+            "name": "ScaleMode",
+            "class": "RadSet",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 192,
+            "description": "Creates the Elements in all views for Radial Sets",
+            "itemtype": "method",
+            "name": "Init",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "RadSet",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 212,
+            "description": "Internal Log Function",
+            "itemtype": "method",
+            "name": "log",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "RadSet",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 234,
+            "description": "Creates a Degree list out of an list of entries",
+            "itemtype": "method",
+            "name": "GetDegreeList",
+            "params": [
+                {
+                    "name": "entries",
+                    "description": "",
+                    "type": "List"
+                }
+            ],
+            "class": "RadSet",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 252,
+            "description": "Get a list of entries grouped by category",
+            "itemtype": "method",
+            "name": "GetEntriesGroupedByCategory",
+            "params": [
+                {
+                    "name": "entries",
+                    "description": "",
+                    "type": "List"
+                }
+            ],
+            "class": "RadSet",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 261,
+            "description": "Get a list of entries grouped by category and by degree",
+            "itemtype": "method",
+            "name": "GetEntriesGroupedByCategoryAndDegree",
+            "params": [
+                {
+                    "name": "entries",
+                    "description": "",
+                    "type": "List"
+                },
+                {
+                    "name": "andDegree",
+                    "description": "",
+                    "type": "Bool"
+                }
+            ],
+            "class": "RadSet",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSets.js",
+            "line": 292,
+            "description": "Get a list of entries from a list of entryIds",
+            "itemtype": "method",
+            "name": "GetEntriesFromIDs",
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "",
+                    "type": "List"
+                }
+            ],
+            "class": "RadSet",
+            "module": "RadSets"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 15,
+            "description": "List of Entries",
+            "itemtype": "attribute",
+            "name": "Entries",
+            "type": "[Entry]",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 21,
+            "description": "List of Categories",
+            "itemtype": "attribute",
+            "name": "CatList",
+            "type": "[Category]",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 27,
+            "description": "List of elements by Cardinality",
+            "itemtype": "attribute",
+            "name": "ElementsByCardinality",
+            "type": "[{Category,Count}]",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 34,
+            "description": "List of elements by degree",
+            "itemtype": "attribute",
+            "name": "ElementsByDegree",
+            "type": "[{Degree,Count}]",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 49,
+            "description": "Autonumber of Entry",
+            "itemtype": "property",
+            "name": "ID",
+            "type": "Integer",
+            "class": "Entry",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 55,
+            "description": "Name of the Entry",
+            "itemtype": "property",
+            "name": "Name",
+            "type": "String",
+            "class": "Entry",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 61,
+            "description": "List of Categories Names",
+            "itemtype": "property",
+            "name": "Cats",
+            "type": "[String]",
+            "class": "Entry",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 67,
+            "description": "Degree",
+            "itemtype": "property",
+            "name": "Degree",
+            "type": "Int",
+            "default": "-1",
+            "class": "Entry",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 74,
+            "description": "ReleaseDate",
+            "itemtype": "property",
+            "name": "Degree",
+            "type": "Date",
+            "default": "null",
+            "class": "Entry",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 81,
+            "description": "AvgRating",
+            "itemtype": "property",
+            "name": "AvgRating",
+            "type": "Float",
+            "default": "0",
+            "class": "Entry",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 88,
+            "description": "Watches",
+            "itemtype": "property",
+            "name": "Watches",
+            "type": "int",
+            "default": "0",
+            "class": "Entry",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 95,
+            "description": "Returns String of connected Categories",
+            "itemtype": "method",
+            "name": "Sets",
+            "return": {
+                "description": "String"
+            },
+            "class": "Entry",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 110,
+            "itemtype": "property",
+            "name": "Name",
+            "type": "String",
+            "class": "Category",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 115,
+            "itemtype": "property",
+            "name": "Count",
+            "type": "Integer",
+            "default": "0",
+            "class": "Category",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 121,
+            "itemtype": "property",
+            "name": "StartAngle",
+            "type": "Integer",
+            "default": "0",
+            "class": "Category",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 127,
+            "itemtype": "property",
+            "name": "EndAngle",
+            "type": "Integer",
+            "default": "0",
+            "class": "Category",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 133,
+            "itemtype": "property",
+            "name": "MiddleAngle",
+            "type": "Integer",
+            "default": "0",
+            "class": "Category",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 139,
+            "itemtype": "property",
+            "name": "SortOrder",
+            "type": "Integer",
+            "default": "0",
+            "class": "Category",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 145,
+            "itemtype": "property",
+            "name": "Histograms",
+            "type": "[Histogram]",
+            "default": "[]",
+            "class": "Category",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 151,
+            "description": "Object that contains information about connected ConnectedCategory, Key for the Category is its Name",
+            "itemtype": "property",
+            "name": "ConnectedCats",
+            "type": "{ConnectedCategory}",
+            "default": "{}",
+            "class": "Category",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 158,
+            "description": "Gets the maximum count in the histogram list",
+            "itemtype": "method",
+            "name": "MaxCountInHistogram",
+            "return": {
+                "description": "Integer"
+            },
+            "class": "Category",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 181,
+            "itemtype": "property",
+            "name": "Name",
+            "type": "String",
+            "class": "ConnectedCategory",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 186,
+            "itemtype": "property",
+            "name": "Count",
+            "type": "Int",
+            "class": "ConnectedCategory",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 191,
+            "description": "List of the connected entry IDs",
+            "itemtype": "property",
+            "name": "Entries",
+            "type": "[Int]",
+            "class": "ConnectedCategory",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 197,
+            "itemtype": "method",
+            "name": "GetNumberOfConnected",
+            "return": {
+                "description": "Int"
+            },
+            "class": "ConnectedCategory",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 217,
+            "itemtype": "property",
+            "name": "Degree",
+            "type": "Int",
+            "class": "Histogram",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 222,
+            "itemtype": "property",
+            "name": "InnerRadius",
+            "type": "Float",
+            "class": "Histogram",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 227,
+            "itemtype": "property",
+            "name": "OuterRadius",
+            "type": "Float",
+            "class": "Histogram",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 232,
+            "itemtype": "property",
+            "name": "Count",
+            "type": "Int",
+            "class": "Histogram",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 239,
+            "description": "Reads a list of strings an transforms it into Entries and Categories",
+            "itemtype": "method",
+            "name": "ConvertCSVtoObjects",
+            "params": [
+                {
+                    "name": "allTextLines",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "sep",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 315,
+            "description": "Create Histogram Objects for the Entries",
+            "itemtype": "method",
+            "name": "CreateHistogram",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsConverter.js",
+            "line": 385,
+            "description": "Method that reads the CSV file and transforms the data in the file",
+            "itemtype": "method",
+            "name": "ReadCSV",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Converter"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 15,
+            "description": "Created Degree Meters from entries list",
+            "itemtype": "method",
+            "name": "FillElementsByDegree",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 56,
+            "description": "Created Cardinality Meters from Category list",
+            "itemtype": "method",
+            "name": "FillCardinality",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 95,
+            "description": "Created Entries Table",
+            "itemtype": "method",
+            "name": "FillSelectedElements",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 139,
+            "description": "Highlight Selected Entries in Cardiality Meters",
+            "itemtype": "method",
+            "name": "ShowCategoryInCardiality",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 171,
+            "description": "Highlight Selected Entries in Degree Meters",
+            "itemtype": "method",
+            "name": "ShowCategoryInDegree",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 202,
+            "description": "Highlight Selected Entries in EntriesTable",
+            "itemtype": "method",
+            "name": "ShowCategoryInEntries",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 217,
+            "description": "Create Tooltip for Histogram",
+            "itemtype": "method",
+            "name": "CreateTooltipForHistogram",
+            "return": {
+                "description": "String"
+            },
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 236,
+            "description": "Create Tooltip for ConnectionArc",
+            "itemtype": "method",
+            "name": "CreateTooltipForConnectionArc",
+            "return": {
+                "description": "String"
+            },
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 267,
+            "description": "This is the Draw function, it create the Radial Sets View with all Sectors,Histograms,ConnectionArcs and the SelectionHighlights",
+            "itemtype": "method",
+            "name": "Draw",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 566,
+            "itemtype": "property",
+            "name": "x",
+            "type": "Integer",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 572,
+            "itemtype": "property",
+            "name": "y",
+            "type": "Integer",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 578,
+            "itemtype": "property",
+            "name": "innerRadius",
+            "type": "Float",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 584,
+            "itemtype": "property",
+            "name": "outerRadius",
+            "type": "Float",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 590,
+            "itemtype": "property",
+            "name": "startAngle",
+            "type": "Float",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 596,
+            "itemtype": "property",
+            "name": "endAngle",
+            "type": "Float",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 602,
+            "itemtype": "property",
+            "name": "Cat1",
+            "type": "String",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 608,
+            "itemtype": "property",
+            "name": "Cat2",
+            "type": "String",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 614,
+            "itemtype": "property",
+            "name": "Count",
+            "type": "Integer",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 620,
+            "itemtype": "property",
+            "name": "SelCount",
+            "type": "Integer",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsDraw.js",
+            "line": 626,
+            "itemtype": "property",
+            "name": "Name",
+            "type": "String",
+            "class": "ConnectionArc",
+            "module": "RadSets",
+            "submodule": "Draw"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 21,
+            "itemtype": "property",
+            "name": "Category",
+            "class": "Selection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 25,
+            "itemtype": "property",
+            "name": "Degree",
+            "class": "Selection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 29,
+            "itemtype": "property",
+            "name": "type",
+            "class": "Selection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 33,
+            "itemtype": "property",
+            "name": "Atomic",
+            "class": "Selection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 37,
+            "itemtype": "property",
+            "name": "Entries",
+            "class": "Selection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 41,
+            "itemtype": "method",
+            "name": "toString",
+            "class": "Selection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 56,
+            "itemtype": "property",
+            "name": "type",
+            "class": "UnionSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 60,
+            "itemtype": "property",
+            "name": "subsets",
+            "class": "UnionSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 64,
+            "itemtype": "property",
+            "name": "Atomic",
+            "class": "UnionSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 68,
+            "itemtype": "property",
+            "name": "Entries",
+            "class": "UnionSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 72,
+            "itemtype": "method",
+            "name": "AddSubSet",
+            "class": "UnionSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 90,
+            "itemtype": "method",
+            "name": "toString",
+            "class": "UnionSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 111,
+            "itemtype": "property",
+            "name": "type",
+            "class": "IntersectSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 115,
+            "itemtype": "property",
+            "name": "subsets",
+            "class": "IntersectSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 119,
+            "itemtype": "property",
+            "name": "Atomic",
+            "class": "IntersectSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 123,
+            "itemtype": "property",
+            "name": "Entries",
+            "class": "IntersectSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 127,
+            "itemtype": "method",
+            "name": "AddSubSet",
+            "class": "IntersectSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 144,
+            "itemtype": "method",
+            "name": "toString",
+            "class": "IntersectSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 166,
+            "itemtype": "property",
+            "name": "type",
+            "class": "SubtractSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 170,
+            "itemtype": "property",
+            "name": "left",
+            "class": "SubtractSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 174,
+            "itemtype": "property",
+            "name": "right",
+            "class": "SubtractSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 178,
+            "itemtype": "property",
+            "name": "Atomic",
+            "class": "SubtractSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 182,
+            "itemtype": "property",
+            "name": "Entries",
+            "class": "SubtractSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 186,
+            "itemtype": "method",
+            "name": "AddSetToRight",
+            "class": "SubtractSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 197,
+            "itemtype": "method",
+            "name": "toString",
+            "class": "SubtractSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 218,
+            "description": "Holds Current Selction Object",
+            "itemtype": "attribute",
+            "name": "CurrentSelection",
+            "class": "SubtractSelection",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 224,
+            "description": "Clears CurrentSelection",
+            "itemtype": "method",
+            "name": "ClearSelection",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 235,
+            "description": "Creates a list of selected entry ids, given by category and degree",
+            "itemtype": "method",
+            "name": "CreateSelectionEntries",
+            "access": "private",
+            "tagname": "",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 258,
+            "description": "Update current Selction with given Selection and CurrentSelectionMode",
+            "itemtype": "method",
+            "name": "UpdateSelection",
+            "access": "private",
+            "tagname": "",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 292,
+            "description": "When selecting an ConnectionArc, it updates current selection with a intersect selection",
+            "itemtype": "method",
+            "name": "SelectArc",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 315,
+            "description": "Methods updates Selection and redraw and highlight new selection",
+            "itemtype": "method",
+            "name": "Select",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 344,
+            "description": "Redraw and highlight CurrentSelection",
+            "itemtype": "method",
+            "name": "ActiveSelection",
+            "access": "private",
+            "tagname": "",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 364,
+            "description": "Current Selection Mode, Options: replace,union,intersect,subtract",
+            "itemtype": "attribute",
+            "name": "CurrentSelMode",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Selector"
+        },
+        {
+            "file": "RadSetsSelector.js",
+            "line": 369,
+            "description": "Bind Event for updating CurrentSelectionMode on SHIFT,CTRL and ALT Keys",
+            "itemtype": "method",
+            "name": "BindKeyListeners",
+            "class": "RadSet",
+            "module": "RadSets",
+            "submodule": "Selector"
+        }
+    ],
+    "warnings": []
+}
